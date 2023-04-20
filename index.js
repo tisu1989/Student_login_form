@@ -48,8 +48,8 @@
         
 //     }
 
-//     let faddr = document.forms['myform']['addr'].value;
-//     if (faddr.length< 5){
+//     <let faddr = document.forms['myform']['addr'].value;
+//     if (faddr.length 5){
 //         seterror("faddr", "*Address should be of greater than five digits!");
 //         returnval = false;
         
