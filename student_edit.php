@@ -84,20 +84,27 @@ require 'dbcon.php';
 
                                     $student = mysqli_fetch_array($query_run);
                                     ?>
-        <form action="code.php"  method= "POST">
+                    <form name="myForm" action="./code.php" onsubmit="return validate()" method="POST">
         <input type="hidden" name="student_id" value = "<?= $student['sno']; ?>">
 
             <label for="name"   style="margin-left:5%">  Name</label><br>
             <input type="text"  style="margin-left:5%"   class="formfield" id="name" name="name"  value="<?=$student['name'] ;?>" ><br>
+            <b style="padding-left:10%;color:red"><span id="nameError"> </span></b><br>
             <label for="email"  style="margin-left:5%">  Email</label><br>
             <input type="text"  style="margin-left:5%"   class="formfield"  id="email" name="email" value="<?=$student['email'] ;?>" ><br>
+            <b style="padding-left:10%;color:red"><span id="emailError"> </span></b><br>
             <label for="addr"  style="margin-left:5%">  Address</label><br>
             <input type="text"  style="margin-left:5%"   class="formfield"  id="addr" name="addr" value="<?=$student['addr'] ;?>" ><br>
+            <b style="padding-left:10%;color:red"><span id="addrError"> </span></b><br>
+
             <label for="phone"  style="margin-left:5%">  PhoneNo</label><br>
             <input type="tel"  style="margin-left:5%"   class="formfield" id="phone" name="phone" value="<?=$student['phone'] ;?>" ><br>
+            <b style="padding-left:10%;color:red"><span id="phoneError"> </span></b><br>
             <label for="course"  style="margin-left:5%">  Course</label><br>
-            <input type="text"  style="margin-left:5%"   class="formfield" id="course" name="course" value="<?=$student['course'] ;?>" ><br>
-            <button  type="edit" name="edit" id ="edit">
+
+             <input type="text"  style="margin-left:5%"   class="formfield" id="course" name="course" value="<?=$student['course'] ;?>" ><br>
+             <b style="padding-left:10%;color:red"><span id="courseError"> </span></b><br>
+             <button  type="edit" name="edit" id ="edit">
                                         Update Student</button>
             
         </form> 
@@ -113,5 +120,6 @@ require 'dbcon.php';
 
 
 </body>
+<script type="text/javascript" src="./index.js"></script>
 
 </html>

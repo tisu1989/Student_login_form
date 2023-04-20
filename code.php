@@ -3,6 +3,8 @@
 //exit('hi');
 session_start();
 require 'dbcon.php';
+ include('message.php');      
+
 
 
 $nameErr = $emailErr = $addrErr = $phoneErr = $courseErr = "";

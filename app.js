@@ -17,12 +17,7 @@ function validate(){
 
         }
     
-        else{
-            document.getElementById('errorname').innerHTML="";
-            return false;
-    
-        }
-    
+        
     console.log(st_name);
 
     if(st_email==''||st_email==null){
