@@ -1,5 +1,8 @@
 <?php require 'dbcon.php'; ?>
 
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,7 +10,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student view</title>
+    <title>Student Details</title>
     <style>
         table,
         th,
@@ -15,21 +18,13 @@
             border: 1px solid black;
         }
     </style>
+
 </head>
 
 <body>
-
-
-
-
-
     <div class="container">
-    <form action="./search.php" method="GET">
-<input id="search" name="search" type="text" placeholder="Type here">
-<input id="submit" type="submit" value="Search">
-
-</form>
-        <table style="width:100%">
+        <h1>Search Details</h1>
+        <table style = "width:100%">
             <tr>
                 <th>ID</th>
                 <th>Name</th>
@@ -37,17 +32,23 @@
                 <th>Address</th>
                 <th>PhoneNo</th>
                 <th>Course</th>
-                <th>Action</th>
-                
-            </tr>
-            <?php
-                  $query = "SELECT * FROM students";
-                  $query_run = mysqli_query($con,$query);
-
-                  if(mysqli_num_rows($query_run) > 0){
-                    foreach($query_run as $student){
-                    ?>
-            <tr>
+                <?php
+                             
+                             //exit('hi');
+                             if(isset($_GET['submit'])){
+                             //exit('hi');
+                             $search = mysqli_real_escape_string($con,$_GET['search']);
+                             $query = "SELECT * FROM students WHERE sno=$search
+                              OR email LIKE '$search' OR addr LIKE '$search'
+                              OR phone LIKE $search OR course LIKE '$search'";
+                             $query_run = mysqli_query($con, $query);
+                             if(mysqli_num_rows($query_run) > 0){
+                                $student = mysqli_fetch_array($query_run);
+                                ?>
+                                     
+                             
+                             
+                                       <tr>
                 <td>
                     <?= $student['sno']; ?>
                 </td>
@@ -66,30 +67,19 @@
                 <td>
                     <?= $student['course']; ?>
                 </td>
-                <td>
-                <button id="back" name="back"><a href="student_viewdetails.php?sno=<?=$student['sno'];?>" >View</button>
-                <button id="back" name="back"><a href="student_edit.php?sno=<?=$student['sno'];?>" >Edit</button>
-                <button id="delete" name="delete"><a href="code.php?sno=<?=$student['sno'];?>" >Delete</button>
+                <?php
 
-               
-                    
-                
-                    
-            </td>
-            </tr>
-            <?php
-
-            }
-            }
+                                }
+           
+                            
+            
             else{
                 echo"<h5> No Record Found </h5>";
             }
+        }
             ?>
         </table>
-        
-
     </div>
-
 
 </body>
 
