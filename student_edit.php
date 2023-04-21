@@ -105,7 +105,7 @@ require 'dbcon.php';
              <input type="text"  style="margin-left:5%"   class="formfield" id="course" name="course" value="<?=$student['course'] ;?>" ><br>
              <b style="padding-left:10%;color:red"><span id="courseError"> </span></b><br>
              <button  type="edit" name="edit" id ="edit">
-                                        Update Student</button>
+                                        Update Student</butotn>
             
         </form> 
         <?php 

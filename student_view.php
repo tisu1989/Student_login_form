@@ -18,8 +18,35 @@
 </head>
 
 <body>
+<?php
+//exit('hi');
+if(isset($_GET['submit'])){
+//exit('hi');
+$search = mysqli_real_escape_string($con,$_GET['search']);
+$query = "SELECT * FROM students WHERE sno=$search
+ OR email LIKE '$search' OR addr LIKE '$search'
+ OR phone LIKE $search OR course LIKE '$course'";
+$query_run = mysqli_query($con, $query);
+if(mysqli_num_rows($query_run) > 0){
+    foreach($query_run as $student){
+        
+
+echo "<p><h3>".$student['name']."</p>";
+ }
+}
+}
+?>
+
+
+
+
     <div class="container">
-        <table>
+    <form action="" method="GET">
+<input id="search" name="search" type="text" placeholder="Type here">
+<input id="submit" type="submit" value="Search">
+
+</form>
+        <table style="width:100%">
             <tr>
                 <th>ID</th>
                 <th>Name</th>
@@ -28,6 +55,7 @@
                 <th>PhoneNo</th>
                 <th>Course</th>
                 <th>Action</th>
+                
             </tr>
             <?php
                   $query = "SELECT * FROM students";
@@ -75,6 +103,7 @@
             }
             ?>
         </table>
+        
 
     </div>
 

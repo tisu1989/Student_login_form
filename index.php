@@ -88,6 +88,7 @@ session_start();
         <h1 style="font-size:50px;text-align:center;">Registration Form</h1>
         <div style="background-color:antiquewhite;padding: 15px;">
             <form name="myForm" action="./code.php" onsubmit="return validate()" method="POST">
+            
                 <label for="name" style="margin-left:5%">Name</label><br>
                 <input type="text" class="formfield" id="name" name="name"><br>
                 <b style="padding-left:10%;color:red"><span id="nameError"> </span></b><br>
@@ -110,5 +111,5 @@ session_start();
         </div>
     </div>
 </body>
-<script type="text/javascript" src="./index.js"></script>
+<script type="text/javascript" src="./index.js?v=<?=filemtime('./index.js') ?>"></script>
 </html>

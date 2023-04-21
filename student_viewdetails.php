@@ -24,7 +24,7 @@
 <body>
     <div class="container">
         <h1>Student Details</h1>
-        <table>
+        <table style = "width:100%">
             <tr>
                 <th>ID</th>
                 <th>Name</th>
