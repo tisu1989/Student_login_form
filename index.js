@@ -70,66 +70,62 @@
 // }
 
 function validate() {
-
   var st_name = document.forms["myForm"]["name"].value;
   var st_email = document.forms["myForm"]["email"].value;
   var st_addr = document.forms["myForm"]["addr"].value;
   var st_phone = document.forms["myForm"]["phone"].value;
   var st_course = document.forms["myForm"]["course"].value;
- document.getElementById("nameError").innerHTML ="";
- document.getElementById("emailError").innerHTML ="";
- document.getElementById("addrError").innerHTML ="";
- document.getElementById("phoneError").innerHTML ="";
- document.getElementById("courseError").innerHTML ="";
+  document.getElementById("nameError").innerHTML = "";
+  document.getElementById("emailError").innerHTML = "";
+  document.getElementById("addrError").innerHTML = "";
+  document.getElementById("phoneError").innerHTML = "";
+  document.getElementById("courseError").innerHTML = "";
   var status = true;
 
-  if (st_name.length <=2) {
+  var letters = /^[A-Za-z]+$/;
+  if (st_name.match(letters)) {
+  } else {
+    document.getElementById("nameError").innerHTML = "Name must be in characters";
+    status = false;
+  }
+  if (st_name.length <= 2) {
     if (st_name == "" || st_name == null) {
-      document.getElementById("nameError").innerHTML =  "Name can't be null";
+      document.getElementById("nameError").innerHTML = "Name can't be null";
     } else {
-      document.getElementById("nameError").innerHTML =  "Name must be greater than 2 characters";
+      document.getElementById("nameError").innerHTML =
+        "Name must be greater than 2 characters";
     }
     status = false;
   }
-if (st_email.length <= 5) {
-  if (st_email == "" || st_email == null) {
-    
-    document.getElementById("emailError").innerHTML = "Email can't be empty ";
-  }
-  else{
-    document.getElementById("emailError").innerHTML = "email must be greater than 5 characters";
-  }
-  
-  status = false;
-}
+  if (st_email.length <= 5) {
+    if (st_email == "" || st_email == null) {
+      document.getElementById("emailError").innerHTML = "Email can't be empty ";
+    } else {
+      document.getElementById("emailError").innerHTML =
+        "email must be greater than 5 characters";
+    }
 
-    
-if (st_addr.length <= 5){
-  if (st_addr == "") {
-    document.getElementById("addrError").innerHTML = "Address can't be empty";
-
-    
-  }
-  else {
-    document.getElementById("addrError").innerHTML =
-      "Address should be greater than 5 digits";
-
-  }
-  status = false;
-  }
-  if (st_phone.length != 10){
-  if (st_phone == "") {
-    document.getElementById("phoneError").innerHTML = "phone can't be empty";
-    
+    status = false;
   }
 
-  else{
-    document.getElementById("phoneError").innerHTML =
-      "Phone number should be of 10 digits";
-    
+  if (st_addr.length <= 5) {
+    if (st_addr == "") {
+      document.getElementById("addrError").innerHTML = "Address can't be empty";
+    } else {
+      document.getElementById("addrError").innerHTML =
+        "Address should be greater than 5 digits";
+    }
+    status = false;
   }
-  status = false;
-}
+  if (st_phone.length != 10) {
+    if (st_phone == "") {
+      document.getElementById("phoneError").innerHTML = "phone can't be empty";
+    } else {
+      document.getElementById("phoneError").innerHTML =
+        "Phone number should be of 10 digits";
+    }
+    status = false;
+  }
 
   if (st_course == "") {
     document.getElementById("courseError").innerHTML = "course can't be empty";
