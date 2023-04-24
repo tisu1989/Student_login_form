@@ -120,6 +120,6 @@ require 'dbcon.php';
 
 
 </body>
-<script type="text/javascript" src="./index.js"></script>
+<script type="text/javascript" src="./index.js?v=<?=filemtime('./index.js')?>"></script>
 
 </html>

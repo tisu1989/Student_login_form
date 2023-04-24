@@ -93,7 +93,7 @@ session_start();
                 <input type="text" class="formfield" id="name" name="name"><br>
                 <b style="padding-left:10%;color:red"><span id="nameError"> </span></b><br>
                 <label for="email" style="margin-left:5%"> Email</label><br>
-                <input type="email" class="formfield" id="email" name="email"><br>
+                <input type="text" class="formfield" id="email" name="email"><br>
                 <b style="padding-left:10%;color:red"><span id="emailError"> </span></b><br>
                 <label for="addr" style="margin-left:5%"> Address</label><br>
                 <input type="text" class="formfield" id="addr" name="addr"><br>
