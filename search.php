@@ -38,27 +38,23 @@
                                $search = mysqli_real_escape_string($con, $_GET['search']);
                                $student = $_GET['search'];
 
-            //     $query = "SELECT * FROM
-            //     rgform.students
-            //     WHERE
-            //   (rgform.students.sno LIKE '%$search%') OR
-            //     (rgform.students.name LIKE '%$search%') OR
-            //     (rgform.students.email LIKE '%$search%') OR
-            //     (rgform.students.addr LIKE '%$search%') OR
-            //     (rgform.students.phone LIKE '%$search%') OR
-            //     (rgform.students.course LIKE '%$search%')";
+                $query = "SELECT * FROM
+                rgform.students
+                WHERE
+            --   (rgform.students.sno LIKE '%$student%') OR
+                (rgform.students.name LIKE '%$student%') OR
+                (rgform.students.email LIKE '%$student%') OR
+                -- (rgform.students.addr LIKE '%$student%') OR
+                (rgform.students.phone LIKE '%$student%') OR
+                (rgform.students.course LIKE '%$student%')";
+$query_run = mysqli_query($con, $query);
 
-                // echo $query;
-                // exit; 
-            
-                $query_run = mysqli_query($con, $query);
-                
-                if (mysqli_num_rows($query_run) > 0) {
-                    foreach($query_run as $student1)
-                    // $student1 = mysqli_fetch_array($query_run);
-                     // print_r($student1);
-//exit;
-                
+if(mysqli_num_rows($query_run) > 0)
+{
+    foreach($query_run as $student1){
+    
+    
+               
             
 ?>
             
@@ -86,6 +82,7 @@
             <?php
 
             }
+        }
         
             
             else{
