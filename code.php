@@ -111,7 +111,7 @@ if (isset($_GET['sno'])) {
     $query = "DELETE FROM students WHERE sno='$student_id' ";
     $query_run = mysqli_query($con, $query);
     if ($query_run) {
-        $_SESSION['message'] = "Student Deleted Successfully";
+      //  $_SESSION['message'] = "Student Deleted Successfully";
         header("Location: index.php");
         exit(0);
     } else {
