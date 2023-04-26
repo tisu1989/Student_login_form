@@ -28,6 +28,8 @@ function validate() {
     }
     status = false;
   }
+
+  
   var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
   if(st_email.match(mailformat)){
 
@@ -72,6 +74,7 @@ if (st_phone.match(number)){
     }
     status = false;
   }
+  
   var coursename =  /^[A-Za-z]+$/;
   if(st_course.match(coursename)){
 

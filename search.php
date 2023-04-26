@@ -15,6 +15,7 @@
         th,
         td {
             border: 1px solid black;
+            border-collapse: collapse;
         }
     </style>
 </head>
@@ -22,7 +23,7 @@
 <body>
 
 </form>
-        <table style="width:100%">
+        <table style="width:90%">
             <tr>
                 <th>ID</th>
                 <th>Name</th>
@@ -41,13 +42,13 @@
                 $query = "SELECT * FROM
                 rgform.students
                 WHERE
-            --   (rgform.students.sno LIKE '%$student%') OR
-                (rgform.students.name LIKE '%$student%') OR
-                (rgform.students.email LIKE '%$student%') OR
-                -- (rgform.students.addr LIKE '%$student%') OR
-                (rgform.students.phone LIKE '%$student%') OR
-                (rgform.students.course LIKE '%$student%')";
-$query_run = mysqli_query($con, $query);
+-- (rgform.students.sno LIKE '%$student%')OR 
+                (rgform.students.name LIKE '%$student%') 
+--                 (rgform.students.email LIKE '%$student%') OR
+--                  (rgform.students.addr LIKE '%$student%') OR
+--                 (rgform.students.phone LIKE '%$student%') OR
+--                 (rgform.students.course LIKE '%$student%')";
+ $query_run = mysqli_query($con, $query);
 
 if(mysqli_num_rows($query_run) > 0)
 {
@@ -92,8 +93,9 @@ if(mysqli_num_rows($query_run) > 0)
             ?>
         </table>
         
-
-    </div>
+            
+    
+    
 
 
 </body>

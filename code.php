@@ -44,10 +44,39 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       
     
     
-        if (
-            !empty($_POST["name"]) && !empty($_POST["email"]) && !empty($_POST["addr"])
+        if (!empty($_POST["name"]) && !empty($_POST["email"]) && !empty($_POST["addr"])
             && !empty($_POST["phone"]) && !empty($_POST["course"])
-        ) { 
+        ) {
+            $name = mysqli_real_escape_string($con, $_POST['name']);
+            $email = mysqli_real_escape_string($con, $_POST['email']);
+            $addr = mysqli_real_escape_string($con, $_POST['addr']);
+            $phone = mysqli_real_escape_string($con, $_POST['phone']);
+            $course = mysqli_real_escape_string($con, $_POST['course']);
+
+
+
+
+
+
+            
+            $name_check_query = " SELECT * FROM  students WHERE phone ='$phone' OR email = '$email' ";
+            $name_check_query_run = mysqli_query($con,$name_check_query);
+            if(mysqli_num_rows($name_check_query_run)>0){
+                $_SESSION['message']="Email or PhoneNo already exist";
+                header("Location: index.php");
+            exit(0);
+
+            }
+            
+
+
+
+// //exit('hi');
+// print_r($email_check_query);
+// exit();
+
+
+
             $query = "INSERT INTO students(name,email,addr,phone,course) 
         VALUES ('$name','$email','$addr',$phone,'$course')";
         
@@ -111,7 +140,7 @@ if (isset($_GET['sno'])) {
     $query = "DELETE FROM students WHERE sno='$student_id' ";
     $query_run = mysqli_query($con, $query);
     if ($query_run) {
-      //  $_SESSION['message'] = "Student Deleted Successfully";
+        $_SESSION['message'] = "Student Deleted Successfully";
         header("Location: index.php");
         exit(0);
     } else {
@@ -156,6 +185,7 @@ if (isset($_POST['edit'])) {
     $course = mysqli_real_escape_string($con, $_POST['course']);
     $query = "UPDATE students SET name='$name', email= '$email',addr='$addr', phone= $phone ,course= '$course' 
                  WHERE sno='$student_id' ";
+
     $query_run = mysqli_query($con, $query);
     if ($query_run) {
         $_SESSION['message'] = "Student Updated Successfully";

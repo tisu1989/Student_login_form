@@ -13,6 +13,7 @@
         th,
         td {
             border: 1px solid black;
+            border-collapse: collapse;
         }
     </style>
 </head>
@@ -41,7 +42,7 @@
                 
             </tr>
             <?php
-                  $query = "SELECT * FROM students";
+                  $query = "SELECT * FROM students ORDER BY sno DESC";
                   $query_run = mysqli_query($con,$query);
 
                   if(mysqli_num_rows($query_run) > 0){
